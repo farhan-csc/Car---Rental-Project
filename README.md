@@ -1,12 +1,10 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://githubusercontent.com" width="350" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://laravel.com" width="80" alt="Laravel Logo"></a></p>
 
 <h2 align="center">Sistem Informasi Car Rental</h2>
 
 <p align="center">
-<img src="https://shields.io" alt="Laravel">
-<img src="https://shields.io" alt="Tailwind CSS">
-<img src="https://shields.io" alt="MySQL">
-<img src="https://shields.io" alt="License">
+<a href="https://packagist.org"><img src="https://shields.io" alt="Laravel Version"></a>
+<a href="https://packagist.org"><img src="https://shields.io" alt="License"></a>
 </p>
 
 ## Tentang Proyek
@@ -56,7 +54,7 @@ php artisan key:generate
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=db_car_rental
+   DB_DATABASE=car_rental_db
    DB_USERNAME=root
    DB_PASSWORD=
    ```
