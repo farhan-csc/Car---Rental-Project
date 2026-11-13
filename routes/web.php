@@ -61,6 +61,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/cars/{car}/edit', [AdminDashboardController::class, 'editCar'])->name('cars.edit');
     Route::put('/cars/{car}', [AdminDashboardController::class, 'updateCar'])->name('cars.update');
     Route::delete('/cars/{car}', [AdminDashboardController::class, 'destroyCar'])->name('cars.destroy');
+
+    Route::post('/bookings/{booking}/cancel', [AdminDashboardController::class, 'cancelBooking'])->name('bookings.cancel');
+
+    Route::get('/settings', [AdminDashboardController::class, 'settings'])->name('settings');
+    Route::post('/settings', [AdminDashboardController::class, 'updateSettings'])->name('settings.update');
+
+    Route::get('/banks', [AdminDashboardController::class, 'bankAccounts'])->name('banks.index');
+    Route::post('/banks', [AdminDashboardController::class, 'storeBank'])->name('banks.store');
+    Route::delete('/banks/{id}', [AdminDashboardController::class, 'destroyBank'])->name('banks.destroy');
 });
 
 // Rute untuk melihat detail mobil

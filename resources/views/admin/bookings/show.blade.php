@@ -170,6 +170,28 @@
                 @endif
             </div>
             @endif
+
+            <!-- FORM PEMBATALAN MANUAL (Selalu Tampil Jika Pesanan Belum Selesai/Dibatalkan) -->
+            @if(!in_array($booking->status, ['selesai', 'dibatalkan', 'kedaluwarsa']))
+            <div class="mt-6 pt-6 border-t border-gray-200">
+                <h3 class="font-bold text-red-600 mb-2 text-sm">Aksi Darurat / Pembatalan</h3>
+                <p class="text-xs text-gray-500 mb-3">Gunakan form ini jika pelanggan tidak datang (No-Show) atau meminta pembatalan.</p>
+                
+                <form action="{{ route('admin.bookings.cancel', $booking->id) }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <select name="cancel_status" class="w-full border-gray-300 rounded-lg text-sm mb-2" required>
+                            <option value="dibatalkan">Batalkan Pesanan (Dibatalkan)</option>
+                            <option value="kedaluwarsa">Tandai Kedaluwarsa (Kedaluwarsa)</option>
+                        </select>
+                        <textarea name="cancel_reason" rows="2" class="w-full border-gray-300 rounded-lg text-sm" placeholder="Alasan wajib diisi (Contoh: Pelanggan tidak datang / No-Show)" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-red-100 text-red-700 hover:bg-red-200 font-bold py-2.5 rounded-lg transition text-sm">
+                        Proses Pembatalan
+                    </button>
+                </form>
+            </div>
+            @endif
         </div>
     </div>
 </div>

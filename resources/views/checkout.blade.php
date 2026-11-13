@@ -81,9 +81,21 @@
 
             <!-- Kotak Info Rekening -->
             <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
-                <p class="text-sm text-blue-800 font-semibold mb-1">Transfer ke Rekening:</p>
-                <p class="text-lg font-extrabold text-blue-900">{{ $bankAccount }}</p>
-                <p class="text-sm text-blue-700 mt-2">Nominal Transfer: 
+                <p class="text-sm text-blue-800 font-semibold mb-3">Silakan Transfer ke Salah Satu Rekening Berikut:</p>
+                <div class="space-y-3">
+                    @foreach($bankAccounts as $bank)
+                    <div class="flex items-center gap-3 bg-white p-2 rounded-lg border border-blue-100">
+                        @if($bank->logo_path)
+                            <img src="{{ asset('storage/' . $bank->logo_path) }}" class="w-12 h-8 object-contain">
+                        @endif
+                        <div>
+                            <p class="font-bold text-sm text-gray-900">{{ $bank->bank_name }} - {{ $bank->account_number }}</p>
+                            <p class="text-xs text-gray-500">a.n {{ $bank->account_name }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <p class="text-sm text-blue-700 mt-4">Nominal Transfer: 
                     <span class="font-bold">
                         @if($booking->payment_option == 'dp') Rp {{ number_format($booking->dp_amount, 0, ',', '.') }} (DP)
                         @else Rp {{ number_format($booking->total_amount, 0, ',', '.') }} (Lunas) @endif

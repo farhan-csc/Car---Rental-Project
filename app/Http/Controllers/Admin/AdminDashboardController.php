@@ -381,4 +381,93 @@ class AdminDashboardController extends Controller
         // Arahkan ke halaman daftar mobil, bukan ke halaman edit sebelumnya
         return redirect()->route('admin.cars.index')->with('success', 'Mobil berhasil dihapus.');
     }
+
+    public function cancelBooking(Request $request, Booking $booking)
+    {
+        // Validasi alasan wajib diisi (FR-076)
+        $request->validate([
+            'cancel_reason' => 'required|string',
+            'cancel_status' => 'required|in:dibatalkan,kedaluwarsa'
+        ]);
+
+        // Update status pesanan
+        $booking->update([
+            'status' => $request->cancel_status,
+            'cancel_reason' => $request->cancel_reason,
+            'cancelled_at' => now(),
+        ]);
+
+        $message = $request->cancel_status === 'dibatalkan' 
+            ? 'Pesanan berhasil dibatalkan.' 
+            : 'Pesanan berhasil diubah menjadi Kedaluwarsa.';
+
+        return back()->with('success', $message);
+    }
+
+    // 1. Menampilkan Halaman Pengaturan
+    public function settings()
+    {
+        // Ambil semua pengaturan dari tabel settings
+        $settings = DB::table('settings')->get();
+        return view('admin.settings', compact('settings'));
+    }
+
+    // 2. Menyimpan Perubahan Pengaturan
+    public function updateSettings(Request $request)
+    {
+        $request->validate([
+            'dp_percent' => 'required|integer|min:1|max:100',
+            'late_fee_percent' => 'required|integer|min:1',
+        ]);
+
+        DB::table('settings')->where('key', 'dp_percent')->update(['value' => $request->dp_percent]);
+        DB::table('settings')->where('key', 'late_fee_percent')->update(['value' => $request->late_fee_percent]);
+
+        return back()->with('success', 'Pengaturan berhasil diperbarui.');
+    }
+
+    // 1. Menampilkan Halaman Kelola Rekening
+    public function bankAccounts()
+    {
+        $banks = DB::table('bank_accounts')->get();
+        return view('admin.banks.index', compact('banks'));
+    }
+
+    // 2. Menyimpan Rekening Baru
+    public function storeBank(Request $request)
+    {
+        $request->validate([
+            'bank_name' => 'required|string|max:50',
+            'account_number' => 'required|string|max:30',
+            'account_name' => 'required|string|max:100',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $logoPath = null;
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('bank_logos', 'public');
+        }
+
+        DB::table('bank_accounts')->insert([
+            'bank_name' => $request->bank_name,
+            'account_number' => $request->account_number,
+            'account_name' => $request->account_name,
+            'logo_path' => $logoPath,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return back()->with('success', 'Rekening bank berhasil ditambahkan.');
+    }
+
+    // 3. Menghapus Rekening
+    public function destroyBank($id)
+    {
+        $bank = DB::table('bank_accounts')->find($id);
+        if ($bank && $bank->logo_path) {
+            \Storage::disk('public')->delete($bank->logo_path);
+        }
+        DB::table('bank_accounts')->where('id', $id)->delete();
+        return back()->with('success', 'Rekening bank berhasil dihapus.');
+    }
 }

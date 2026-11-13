@@ -76,9 +76,11 @@ class BookingController extends Controller
     {
         $booking = Booking::where('payment_token', $token)->firstOrFail();
         $car = DB::table('cars')->find($booking->car_id);
-        $bankAccount = DB::table('settings')->where('key', 'bank_account')->value('value') ?? 'BCA 1234567890 a.n Rental Mobil';
         
-        return view('checkout', compact('booking', 'car', 'bankAccount'));
+        // Ambil semua rekening bank
+        $bankAccounts = DB::table('bank_accounts')->get();
+        
+        return view('checkout', compact('booking', 'car', 'bankAccounts'));
     }
 
     // 3. Memproses Pilihan Pembayaran & Data Diri
