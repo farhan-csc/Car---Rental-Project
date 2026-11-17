@@ -67,7 +67,7 @@
     </div>
 
     <!-- Top Picks Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-0">
+    <div id="mobil-kami" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-0">
         <div class="mb-10">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Top picks vehicle this month</h2>
             <p class="text-gray-500 mt-2 text-sm">Experience the epitome of amazing journey with our top picks.</p>
@@ -122,6 +122,95 @@
                     Belum ada data mobil. Silakan jalankan Seeder.
                 </div>
             @endforelse
+        </div>
+    </div>
+
+    <!-- Section Cara Sewa (Mengadaptasi Desain Referensi) -->
+    <div id="cara-sewa" class="bg-gray-50 py-20 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Cara Sewa Mobil di Horizon</h2>
+                <p class="text-gray-500 mt-2 text-sm">Hanya butuh 4 langkah mudah untuk memulai perjalanan Anda.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center hover:-translate-y-1 transition duration-300">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Pilih Mobil</h3>
+                    <p class="text-xs text-gray-500">Cari mobil yang sesuai dengan kebutuhan dan tanggal Anda.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center hover:-translate-y-1 transition duration-300">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Upload Dokumen</h3>
+                    <p class="text-xs text-gray-500">Unggah KTP, SIM, dan bukti transfer untuk verifikasi.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center hover:-translate-y-1 transition duration-300">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Lakukan Pembayaran</h3>
+                    <p class="text-xs text-gray-500">Bayar lunas atau DP 50% melalui transfer bank.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center hover:-translate-y-1 transition duration-300">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Ambil Kunci</h3>
+                    <p class="text-xs text-gray-500">Datang ke lokasi kami dan nikmati perjalanan Anda!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Tentang Kami (Grid 3 Gambar + Banner) -->
+    <div id="tentang-kami" class="bg-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Grid 3 Gambar (Mengadaptasi Referensi) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <!-- Gambar 1 (Kiri Atas) -->
+                <div class="relative rounded-2xl overflow-hidden h-64 md:h-80 group">
+                    <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Comfort Zone" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">Explore more to get<br>your comfort zone</h3>
+                        <p class="text-sm text-gray-200 mb-4">Book your perfect stay with us.</p>
+                        <a href="#mobil-kami" class="inline-block bg-white text-black px-4 py-2 rounded-lg text-xs font-bold hover:bg-gray-200 transition">Booking Now &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Gambar 2 (Kanan - Memanjang) -->
+                <div class="md:col-span-2 relative rounded-2xl overflow-hidden h-64 md:h-80 group">
+                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Luxury Car" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/30"></div>
+                    <div class="absolute inset-0 flex items-center justify-center text-center p-4">
+                        <h3 class="text-2xl md:text-4xl font-bold text-white leading-tight">Beyond accommodation,<br>creating memories of a lifetime.</h3>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Gambar 3 (Kiri Bawah - Dashboard Mobil) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Gambar 3 (Kiri Bawah - Dashboard Mobil) -->
+                <div class="relative rounded-2xl overflow-hidden h-48 md:h-auto">
+                    <img src="https://images.unsplash.com/photo-1653618293287-a66eb0c4271a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Vehicle Available" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <p class="text-xs text-gray-300">Vehicle Available</p>
+                        <p class="text-3xl font-extrabold">8</p>
+                    </div>
+                </div>
+
+                <!-- Teks Tentang Kami (Kanan Bawah) -->
+                <div class="md:col-span-2 bg-gray-100 rounded-2xl p-8 flex flex-col justify-center border border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Tentang Horizon Car Rental</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Horizon Car Rental didirikan dengan satu tujuan: memberikan pengalaman berkendara terbaik bagi Anda. Kami menyediakan armada terbaru, pelayanan prima, dan harga yang transparan untuk memastikan setiap perjalanan Anda menjadi kenangan yang tak terlupakan.
+                    </p>
+                    <a href="#mobil-kami" class="inline-block bg-black text-white font-bold py-2.5 px-6 rounded-lg text-sm hover:bg-gray-800 transition w-max">Lihat Armada Kami</a>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
